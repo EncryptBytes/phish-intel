@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const api = axios.create({ baseURL: "http://localhost:8000/api" });
+const api = axios.create({ baseURL: "https://phish.encryptbytes.com/api" });
 
 export const analyseSubmission = async (formData) =>
   api.post("/analyse", formData, { headers: { "Content-Type": "multipart/form-data" } });

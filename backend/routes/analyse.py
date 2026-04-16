@@ -4,6 +4,7 @@ from services.ocr_service import extract_text_from_image
 from services.ollama_service import analyse_text
 from services.mongo_service import save_finding
 from datetime import datetime
+import copy
 
 router = APIRouter()
 
@@ -43,6 +44,7 @@ async def analyse(
     result["input_method"] = input_method
     result["detected_at"] = datetime.utcnow()
     result["source"] = "User Submission"
-
-    save_finding(result)
+    
+    db_data = copy.deepcopy(result)   # separate copy
+    save_finding(db_data)
     return result

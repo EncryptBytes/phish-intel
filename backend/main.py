@@ -8,15 +8,15 @@ app = FastAPI(title="Phishing Intelligence Platform API", version="1.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000"],
+    allow_origins=["https://phish.encryptbytes.com"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-app.include_router(analyse_router, prefix="/api")
-app.include_router(taxonomy_router, prefix="/api")
-app.include_router(findings_router, prefix="/api")
+app.include_router(analyse_router)
+app.include_router(taxonomy_router)
+app.include_router(findings_router)
 
 @app.get("/")
 def root():
